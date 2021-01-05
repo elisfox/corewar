@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 19:06:23 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 15:58:44 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:05:47 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_arena		*init_arena(void)
 	arena->dump_nbr_cycles = -1;
 	arena->players = NULL;
 	arena->count_players = 0;
+	arena->num_cycles = 0;
 	arena->flag_n = init_flag_n();
 	ft_bzero(arena->core, MEM_SIZE);
 	return(arena);

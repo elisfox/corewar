@@ -6,7 +6,7 @@
 #    By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/31 19:24:15 by gdoze             #+#    #+#              #
-#    Updated: 2021/01/05 13:33:06 by jojoseph         ###   ########.fr        #
+#    Updated: 2021/01/05 16:37:44 by jojoseph         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ VM_SRS_LIST = \
 	init.c \
 	arena.c \
 	print.c \
+	game.c \
 
 # Objects
 

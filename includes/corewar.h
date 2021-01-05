@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:00:08 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 16:27:48 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:15:54 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/get_next_line.h"
 # include "op.h"
+
+# define DUMP_WIDTH 64
 
 typedef struct			s_player
 {
@@ -43,6 +45,7 @@ typedef struct			s_arena
 	int					dump_nbr_cycles;
 	int					*flag_n;
 	int					count_players;
+	int					num_cycles;
 	t_player			*players;
 	t_carriage			*carriages;
 	unsigned char		core[MEM_SIZE];
@@ -54,6 +57,9 @@ unsigned int	reverse_bytes(unsigned int value);
 void			ft_exit(char *str, char *str2);
 t_arena			*init_arena(void);
 void			put_code_to_arena(t_arena *arena);
-void    		print(t_arena *arena);
+void			print(t_arena *arena);
+void			start_game(t_arena *arena);
+void			print_arena(void *core);
+
 
 #endif

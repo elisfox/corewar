@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:07:33 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 16:29:44 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:39:32 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ int		main(int ac, char **av)
 				help();
 		}
 		get_arg(ac, av, arena);
+		start_game(arena);
 	}
 	else
 		help();

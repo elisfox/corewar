@@ -30,3 +30,22 @@ void    print(t_arena *arena)
         car = car->next;
     }
 }
+
+void    print_arena(void *core)
+{
+    int	i;
+	int	j;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("0x%0.4x : ", i);
+		j = 0;
+		while (j++ < DUMP_WIDTH)
+		{
+			ft_printf("%02x ", ((unsigned char*)(core))[i]);
+			++i;
+		}
+		ft_printf("\n");
+	}
+}
