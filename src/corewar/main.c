@@ -6,21 +6,11 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:07:33 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 16:39:32 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:39:39 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-int	is_flag(char *av, char *av2)
-{
-	if (ft_strequ(av, "-n") && ft_atoi(av2))
-		return (1);
-	else if (ft_strequ(av, "-dump") && ft_atoi(av2))
-		return (1);
-	else
-		return (0);
-}
 
 t_bool	is_avname(const char *name_av, const char *ext)
 {
@@ -28,6 +18,16 @@ t_bool	is_avname(const char *name_av, const char *ext)
 		return (!ft_strcmp(ft_strchr(name_av, '\0') - ft_strlen(ext), ext));
 	else
 		return (false);
+}
+
+int	is_flag(char *av, char *av2, char *av3)
+{
+	if (ft_strequ(av, "-n") && ft_atoi(av2) && is_avname(av3, ".cor"))
+		return (1);
+	else if (ft_strequ(av, "-dump") && ft_atoi(av2))
+		return (1);
+	else
+		return (0);
 }
 
 void	help(void)
@@ -215,9 +215,9 @@ void get_arg(int ac, char **av, t_arena *arena)
 	{
 		if (is_avname(av[i], ".cor"))
 			read_champ(arena, av[i]);
-		else if (av[i + 1] && is_flag(av[i], av[i + 1]) && is_avname(av[i], ".cor"))
+		else if (av[i + 1] && is_flag(av[i], av[i + 1], av[i + 2]))
 			ft_printf("ok21\n");
-		else if (ft_atoi(av[i]) && is_flag(av[i - 1], av[i]) && is_avname(av[i + 2], ".cor"))
+		else if (ft_atoi(av[i]) && is_flag(av[i - 1], av[i], av[i + 1]))
 			check_num_player(av[i - 1], arena, count);
 			//ft_printf("ok22\n");
 			//get_num_flag(av[i - 1], av[i], arena);
@@ -241,9 +241,9 @@ int		main(int ac, char **av)
 			if (is_avname(av[i], ".cor"))
 				arena->count_players++;
 				//ft_printf("ok11\n");
-			else if (av[i + 1] && is_flag(av[i], av[i + 1]) && is_avname(av[i + 2], ".cor"))
+			else if (av[i + 1] && is_flag(av[i], av[i + 1], av[i + 2]))
 				ft_printf("ok12\n");
-			else if (ft_atoi(av[i]) && is_flag(av[i - 1], av[i]))
+			else if (ft_atoi(av[i]) && is_flag(av[i - 1], av[i], av[i + 1]))
 				get_num_flag(av[i - 1], av[i], arena);
 			else
 				help();
