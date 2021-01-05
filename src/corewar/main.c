@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:07:33 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 13:34:05 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:29:44 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ void get_arg(int ac, char **av, t_arena *arena)
 			//get_num_flag(av[i - 1], av[i], arena);
 	}
 	put_code_to_arena(arena);
-	print(arena);
+	//print(arena);
 }
 
 int		main(int ac, char **av)

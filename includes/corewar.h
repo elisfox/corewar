@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:00:08 by jojoseph          #+#    #+#             */
-/*   Updated: 2021/01/05 14:24:49 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:27:48 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ typedef struct			s_player
 	struct s_player		*prev;
 }						t_player;
 
-typedef struct			s_arena
-{
-	int					dump_nbr_cycles;
-	int					*flag_n;
-	int					count_players;
-	t_player			*players;
-	t_carriage			*carriages;
-	unsigned char		core[MEM_SIZE];
-}						t_arena;
-
 typedef struct			s_carriage
 {
 	int					id;
@@ -48,11 +38,22 @@ typedef struct			s_carriage
 	struct s_carriage	*prev;
 }						t_carriage;
 
+typedef struct			s_arena
+{
+	int					dump_nbr_cycles;
+	int					*flag_n;
+	int					count_players;
+	t_player			*players;
+	t_carriage			*carriages;
+	unsigned char		core[MEM_SIZE];
+}						t_arena;
+
 	
-int			main(int argc, char **argv);
-void		ft_exit(char *str, char *str2);
-t_arena		*init_arena(void);
-void		put_code_to_arena(t_arena *arena);
-void    print(t_arena *arena);
+int				main(int argc, char **argv);
+unsigned int	reverse_bytes(unsigned int value);
+void			ft_exit(char *str, char *str2);
+t_arena			*init_arena(void);
+void			put_code_to_arena(t_arena *arena);
+void    		print(t_arena *arena);
 
 #endif

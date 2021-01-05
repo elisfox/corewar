@@ -6,7 +6,7 @@
 /*   By: jojoseph <jojoseph@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 19:06:23 by fjessi            #+#    #+#             */
-/*   Updated: 2021/01/05 14:27:09 by jojoseph         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:28:02 by jojoseph         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,26 @@ t_carriage	*create_carriage(t_arena *arena, t_player *player)
 	carriage->wait_cmd = 1;
     carriage->owner = player;
     carriage->next = NULL;
-    carriage->prev = NULL;
-    arena->carriages = carriage;    
+    carriage->prev = NULL;    
+    return (carriage);
+}
+
+t_carriage	*get_new_carriage(t_arena *arena, t_player *tmp, int pc)
+{
+    t_carriage	*carriage;
+
+	carriage = create_carriage(arena, tmp);
+    carriage->pc = pc;
+    carriage->id = tmp->num;
+    carriage->reg[1] = reverse_bytes(-(tmp->num));
     return (carriage);
 }
 
 void    put_code_to_arena(t_arena *arena)
 {
     t_carriage	*carriage;
+    t_carriage  *tmp_car;
+    t_carriage  *tmp_car_prev;
     t_player *tmp;
     int			pc;
 
@@ -37,20 +49,27 @@ void    put_code_to_arena(t_arena *arena)
     tmp = arena->players;
     while(tmp)
     {
-        if(arena->carriages = NULL)
+        if(arena->carriages == NULL)
+        {
             carriage = create_carriage(arena, tmp);
+            carriage->pc = pc;
+            carriage->id = tmp->num;
+            carriage->reg[1] = reverse_bytes(-(tmp->num));
+            arena->carriages = carriage;
+        }            
         else
         {
-                
+            tmp_car = arena->carriages;
+            while(tmp_car->next)
+               tmp_car = tmp_car->next;
+		tmp_car_prev = tmp_car;
+		tmp_car->next = get_new_carriage(arena, tmp, pc);
+		tmp_car = tmp_car->next;
+		tmp_car->prev = tmp_car_prev;
         }
-        
-        carriage->pc = pc;
-        carriage->id = tmp->num;
-        carriage->reg[1] = reverse_bytes(-(tmp->num));
-        
-        
-        
-        
-        
+        ft_memmove(arena->core + pc, tmp->code, reverse_bytes(tmp->header.prog_size));
+        pc += MEM_SIZE / arena->count_players;
+        tmp = tmp->next;
     }
+    print(arena);
 }

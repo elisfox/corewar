@@ -3,7 +3,7 @@
 void    print(t_arena *arena)
 {
     int  i;
-    t_player *pl;
+    /*t_player *pl;
 
     pl = arena->players;
     i = 0;
@@ -18,5 +18,15 @@ void    print(t_arena *arena)
         printf("name = %s\n", pl->header.prog_name);
         pl = pl->next;
         
+    }*/
+
+    t_carriage *car;
+
+    car = arena->carriages;
+    i = 0;
+    while(car)
+    {
+        printf("pc = %d\n", car->pc);
+        car = car->next;
     }
 }
